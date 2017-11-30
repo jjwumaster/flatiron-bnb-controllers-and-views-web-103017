@@ -1,0 +1,11 @@
+<h1>All Cities</h1>
+<ul>
+  <%@cities.each do |city|%>
+
+  <div>
+    <a href="<%=city_path(city)%>"><%=city.name%></a>
+
+  </div>
+
+  <%end%>
+</ul>
