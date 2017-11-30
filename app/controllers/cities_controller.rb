@@ -13,7 +13,12 @@ class CitiesController < ApplicationController
   end
 
   def show
-    @city = City.find(params[:id])
+    if params[:start_date]
+      @city = City.find(params[:id])
+      @filtered = @city.city_openings(params[:start_date], params[:end_date])
+    else
+      @city = City.find(params[:id])
+    end
   end
 
   def edit

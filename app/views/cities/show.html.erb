@@ -1,6 +1,9 @@
-<%=@city.name%>
-<%@city.listings.each do |listing|%>
-  <%=listing.title%>
+<h2><%=@city.name%></h2>
+
+<% if @filtered %>
+
+<%@filtered.each do |listing|%>
+  <div><%=listing.title%></div>
   <ul>
     <li><%=listing.neighborhood.name%></li>
     <li><%=listing.address%></li>
@@ -12,10 +15,27 @@
   </ul>
 <%end%>
 
-<%=form_tag listings_path do%>
+<% else %>
+
+<%@city.listings.each do |listing|%>
+  <div><%=listing.title%></div>
+  <ul>
+    <li><%=listing.neighborhood.name%></li>
+    <li><%=listing.address%></li>
+    <li><%=listing.listing_type%></li>
+    <li><%=listing.description%></li>
+    <li>$<%=listing.price%></li>
+    <li><%=listing.host.name%></li>
+    <li>Average Review:<%=listing.average_review_rating%></li>
+  </ul>
+<%end%>
+
+<% end %>
+
+<%=form_tag city_path(@city), method: :get do %>
   <label>Check-in:</label>
-  <input type="datetime-local" name="start_date">
+  <input type="date" name="start_date">
   <label>Check-out:</label>
-  <input type="datetime-local" name="end_date">
+  <input type="date" name="end_date">
   <input type="submit" value="submit dates">
 <%end%>
