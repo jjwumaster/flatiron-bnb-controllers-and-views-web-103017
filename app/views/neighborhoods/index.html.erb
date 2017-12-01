@@ -1,0 +1,12 @@
+<a href="<%=cities_path%>">Cities</a> <a href="<%=listings_path%>">Listings</a> <a href="<%=neighborhoods_path%>">Neighborhoods</a>
+<h2>All Neighborhoods</h2>
+<ul>
+  <%@neighborhoods.each do |neighborhood|%>
+
+  <div>
+    <a href="<%=neighborhood_path(neighborhood)%>"><%=neighborhood.name%></a>
+
+  </div>
+
+  <%end%>
+</ul>

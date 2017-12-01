@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
   def index
 
     @listings = Listing.all
-    binding.pry
+    # binding.pry
   end
 
   def new
